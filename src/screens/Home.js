@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, {useState} from 'react';
 import {
   StyleSheet,
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     gap: 1,
-     justifyContent: 'center',
+    justifyContent: 'center',
   },
   input: {
     borderRadius: 20,
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     borderBottomColor: '#000000',
     padding: 10,
     width: 300,
-    marginBottom: 10
+    marginBottom: 10,
   },
   text: {
     color: 'grey',
@@ -108,13 +109,10 @@ const styles = StyleSheet.create({
   },
   TouchableOpacity: {
     backgroundColor: 'white',
-    borderBottomColor: '#000000',
-    borderBottomWidth: 1,
     width: 200,
     padding: 10,
     borderRadius: 10,
-        marginBottom: 10
-
+    marginBottom: 10,
   },
 });
 
