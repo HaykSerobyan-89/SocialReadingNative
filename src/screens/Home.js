@@ -2,7 +2,6 @@
 import React, {useState} from 'react';
 import {
   StyleSheet,
-  Button,
   TextInput,
   TouchableOpacity,
   View,
@@ -73,19 +72,21 @@ function Login({navigation}) {
         }}>
         <Text style={styles.text}>Sign in</Text>
       </TouchableOpacity>
-      <Button
-        title="Don't have an account?"
+      <TouchableOpacity
+      style={styles.tochableDont}
         onPress={() => {
           navigation.navigate('Register');
         }}
-      />
+      >
+      <Text style={ { color: 'grey' } }>Do not have an account?</Text>
+      </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   view: {
-    backgroundColor: '#edcfff',
+    backgroundColor: '#edfcf8',
     width: '100%',
     height: '100%',
     flex: 1,
@@ -115,6 +116,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
 
   },
+ tochableDont: {
+ backgroundColor: 'transparent',
+  }
 });
 
 export default Login;

@@ -17,12 +17,14 @@ function MyStack() {
           component={HomeScreen}
           options={{title: 'Social Reading'}}
         />
-        <Stack.Screen name="Register" component={Register} 
-         options={{headerShown: false}}
-         />
+        <Stack.Screen
+          name="Register"
+          component={Register}
+          options={{headerShown: false}}
+        />
         <Stack.Screen
           name="Profile"
-         options={{headerShown: false}}
+          options={{headerShown: false}}
           component={ProfileScreen}
         />
       </Stack.Navigator>
@@ -31,3 +33,4 @@ function MyStack() {
 }
 
 export default MyStack;
+
