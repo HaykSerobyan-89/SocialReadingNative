@@ -4,11 +4,10 @@ import {TextInput, TouchableOpacity, View, Text} from 'react-native';
 import axios from 'axios';
 
 function Login({ navigation }) {
-  // console.log(props);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState('elenamkrtchyan5@gmail.com');
+  const [password, setPassword] = useState('Barev12345');
   return (
-    <View>
+    <View >
       <Text style={{color: 'red'}}>Login</Text>
       <TextInput
         placeholder="email"
@@ -38,8 +37,10 @@ function Login({ navigation }) {
                   headers: {Authorization: userInfo},
                 })
                 .then(function (response) {
-                  // props.navigation.navigate("Home")
                   console.log('act', response.data);
+                  navigation.navigate("Profile", {data: response.data})
+setEmail("")
+setPassword("")
                 })
                 .catch(function (error) {
                   if (error.response) {
@@ -66,7 +67,6 @@ function Login({ navigation }) {
       <Button
             title="Don't have an account"
             onPress={() => {
-              console.log("button")
               navigation.navigate('Register')
               }
             }

@@ -10,16 +10,20 @@ const Stack = createNativeStackNavigator();
 
 function MyStack () {
   return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={HomeScreen}
-          options={{ title: 'Social Reading App' }}
-        />
-        <Stack.Screen name="Register" component={Register} />
-      </Stack.Navigator>
-    </NavigationContainer>
+  <NavigationContainer>
+                       <Stack.Navigator initialRouteName="Login">
+                         <Stack.Screen
+                           name="Login"
+                           component={HomeScreen}
+                           options={{ title: 'Social Reading' }}
+                         />
+                         <Stack.Screen name="Register" component={Register} />
+                         <Stack.Screen name="Profile" options={{headerShown:false}, {title:"profile"}} component={ProfileScreen} />
+
+
+                       </Stack.Navigator>
+                     </NavigationContainer>
+
   );
 };
 

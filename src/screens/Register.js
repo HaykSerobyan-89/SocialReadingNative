@@ -9,8 +9,15 @@ function Register() {
   const [password, setPassword] = useState('');
 
   return (
-    <View>
-      <Text style={styles.text}>Register</Text>
+    <View  style={{
+    backgroundColor:"#edcfff",
+    width:"100%",
+    height: "100%",
+//                 display: "flex",
+//                 flexDirection:"column",
+//                 alignItem:"center",
+//                 justifyContent:"center"
+                }}>
       <TextInput
         placeholder="name"
         style={styles.input}
@@ -50,6 +57,11 @@ function Register() {
             })
             .then(function( resp ) {
               console.log(resp.data);
+              setName("")
+              setSurname("")
+              setPassword("")
+              setEmail("")
+              Alert.alert("Verify your email")
             })
             .catch(function (error) {
               if (error.response) {
@@ -69,11 +81,15 @@ function Register() {
 
 const styles = StyleSheet.create({
   input: {
-    borderBottomColor: 'grey',
-    alignSelf: 'stretch',
+//    borderBottomColor: 'grey',
+//    alignSelf: 'stretch',
+borderRadius:20,
+
   },
   text: {
-    color: 'red',
+    color: 'grey',
+    textAlign:"center",
+    fontSize:20
   },
 });
 
