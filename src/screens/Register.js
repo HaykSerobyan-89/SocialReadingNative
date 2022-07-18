@@ -9,15 +9,8 @@ function Register() {
   const [password, setPassword] = useState('');
 
   return (
-    <View  style={{
-    backgroundColor:"#edcfff",
-    width:"100%",
-    height: "100%",
-//                 display: "flex",
-//                 flexDirection:"column",
-//                 alignItem:"center",
-//                 justifyContent:"center"
-                }}>
+    <View
+     style={styles.view}>
       <TextInput
         placeholder="name"
         style={styles.input}
@@ -48,6 +41,7 @@ function Register() {
         onChangeText={setPassword}
       />
       <TouchableOpacity
+      style ={styles.TouchableOpacity}
         onPress={() => {
           axios.post('https://www.sr-be.arpify.com/auth/users/', {
               first_name: name,
@@ -73,24 +67,44 @@ function Register() {
               }
             });
         }}>
-        <Text>Sign up</Text>
+        <Text style={styles.text}>Sign up</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
-  input: {
-//    borderBottomColor: 'grey',
-//    alignSelf: 'stretch',
-borderRadius:20,
+view:{
+   backgroundColor:"#edcfff",
+    width:"100%",
+    height: "100%",
+    flex: 1,
+    flexDirection:"column",
+    alignItems: 'center',
+    justifyContent: 'center',
 
+    },
+  input: {
+borderRadius:20,
+  backgroundColor: "white",
+        borderBottomColor: '#000000',
+        padding: 10,
+        width: 300,
+            marginBottom: 10
   },
   text: {
     color: 'grey',
     textAlign:"center",
     fontSize:20
   },
+  TouchableOpacity: {
+  backgroundColor: "grey",
+  color:"withe",
+          width: 200,
+          padding: 10,
+           marginBottom: 10
+  }
+
 });
 
 export default Register;
