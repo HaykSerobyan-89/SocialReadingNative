@@ -6,11 +6,12 @@ import {
   TouchableOpacity,
   View,
   Alert,
+  Button
 } from 'react-native';
 import React, {useState} from 'react';
 import axios from 'axios';
 
-function Register() {
+function Register({navigation}) {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
@@ -83,6 +84,12 @@ function Register() {
         }}>
         <Text style={styles.text}>Sign up</Text>
       </TouchableOpacity>
+      <Button
+        title="Already have an account?"
+        onPress={() => {
+          navigation.navigate('Login');
+        }}
+      />
     </View>
   );
 }

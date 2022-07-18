@@ -17,7 +17,9 @@ function MyStack() {
           component={HomeScreen}
           options={{title: 'Social Reading'}}
         />
-        <Stack.Screen name="Register" component={Register} />
+        <Stack.Screen name="Register" component={Register} 
+         options={{headerShown: false}}
+         />
         <Stack.Screen
           name="Profile"
          options={{headerShown: false}}

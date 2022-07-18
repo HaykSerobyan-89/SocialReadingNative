@@ -71,10 +71,10 @@ function Login({navigation}) {
               }
             });
         }}>
-        <Text>Sign in</Text>
+        <Text style={styles.text}>Sign in</Text>
       </TouchableOpacity>
       <Button
-        title="Don't have an account"
+        title="Don't have an account?"
         onPress={() => {
           navigation.navigate('Register');
         }}
@@ -113,6 +113,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     marginBottom: 10,
+
   },
 });
 
