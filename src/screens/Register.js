@@ -1,16 +1,23 @@
-import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+/* eslint-disable prettier/prettier */
+import {
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+  Alert,
+} from 'react-native';
 import React, {useState} from 'react';
 import axios from 'axios';
 
-function Register() {
+function Register({navigation}) {
   const [name, setName] = useState('');
   const [surname, setSurname] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
   return (
-    <View>
-      <Text style={styles.text}>Register</Text>
+    <View style={styles.view}>
       <TextInput
         placeholder="name"
         style={styles.input}
@@ -41,19 +48,32 @@ function Register() {
         onChangeText={setPassword}
       />
       <TouchableOpacity
+        style={styles.TouchableOpacity}
         onPress={() => {
-          axios.post('https://www.sr-be.arpify.com/auth/users/', {
+          axios
+            .post('https://www.sr-be.arpify.com/auth/users/', {
               first_name: name,
               last_name: surname,
               email: email,
               password: password,
             })
-            .then(function( resp ) {
+            .then(function (resp) {
               console.log(resp.data);
+              setName('');
+              setSurname('');
+              setPassword('');
+              setEmail('');
+              Alert.alert('Verify your email');
             })
             .catch(function (error) {
               if (error.response) {
                 console.log('error.response ', error.response);
+                const arr = Object.keys(error.response.data);
+                if (error.response.data) {
+                  arr.forEach(a => {
+                    Alert.alert(`${a}: ${error.response.data[a]}`);
+                  });
+                }
               } else if (error.request) {
                 console.log('error.request ', error.request);
               } else if (error.message) {
@@ -61,19 +81,52 @@ function Register() {
               }
             });
         }}>
-        <Text>Sign up</Text>
+        <Text style={styles.text}>Sign up</Text>
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.tochableHave}
+        onPress={() => {
+          navigation.navigate('Login');
+        }}>
+        <Text style={{color: 'grey'}}>Already have an account?</Text>
       </TouchableOpacity>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  view: {
+    backgroundColor: '#edfcf8',
+    width: '100%',
+    height: '100%',
+    flex: 1,
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   input: {
-    borderBottomColor: 'grey',
-    alignSelf: 'stretch',
+    borderRadius: 20,
+    backgroundColor: 'white',
+    borderBottomColor: '#000000',
+    padding: 10,
+    width: 300,
+    marginBottom: 10,
   },
   text: {
-    color: 'red',
+    color: 'grey',
+    textAlign: 'center',
+    fontSize: 20,
+  },
+  TouchableOpacity: {
+    backgroundColor: 'white',
+    color: 'grey',
+    width: 200,
+    padding: 10,
+    marginBottom: 10,
+    borderRadius: 10,
+  },
+  tochableHave: {
+    backgroundColor: 'transparent',
   },
 });
 
