@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   View,
   Text,
+  Alert,
 } from 'react-native';
 import axios from 'axios';
 
@@ -63,6 +64,12 @@ function Login({navigation}) {
             .catch(function (error) {
               if (error.response) {
                 console.log('error.response ', error.response);
+                const arr = Object.keys(error.response.data);
+                if (error.response.data) {
+                  arr.forEach(a => {
+                    Alert.alert(`${a}: ${error.response.data[a]}`);
+                  });
+                }
               } else if (error.request) {
                 console.log('error.request ', error.request);
               } else if (error.message) {
